@@ -24,10 +24,9 @@ spec:
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
-          - name: DB
-            value: {{ template "fullname" . }}-db
-        - name: {{ $pkey }}
-          value: {{ quote $pval }}
+        - name: DB
+          value: {{ template "fullname" . }}-db
+
 {{- end }}
         ports:
         - containerPort: {{ .Values.service.internalPort }}
