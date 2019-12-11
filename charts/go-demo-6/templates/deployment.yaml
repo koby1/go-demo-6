@@ -24,7 +24,8 @@ spec:
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
-{{- range $pkey, $pval := .Values.env }}
+          - name: DB
+            value: {{ template "fullname" . }}-db
         - name: {{ $pkey }}
           value: {{ quote $pval }}
 {{- end }}
